@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect } from "react";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 export const useServiceWorker = () => {
-  const [waitingWorker, setWaitingWorker] = useState<ServiceWorker | null>(null);
-  const [showReload, setShowReload] = useState < boolean > false;
+  const [waitingWorker, setWaitingWorker] = useState(null);
+  const [showReload, setShowReload] = useState(false);
   // called when a service worker
   // updates. this function is a callback
   // to the actual service worker
