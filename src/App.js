@@ -1,10 +1,15 @@
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import { useServiceWorker } from './pwa/useServiceWorker';
+import popular1 from "./wordCollections/popular/popular1.json";
 
 function App() {
   // click to add word
-  const items = ['aaa', 'bbb', 'ccc']
+  const wordCollections = [
+    { name:'popular', items: popular1 }
+  ]
+  console.log('wordCollections: ', wordCollections);
+  const deskItems = ['aaa', 'bbb', 'ccc']
   const [res, setRes] = useState('dsadsa')
   const inputRef = useRef()
   const addWord = (word) => {
@@ -21,24 +26,15 @@ function App() {
   // pwa
   const { reloadPage, showReload, waitingWorker } = useServiceWorker()
   const [refreshButton, setRefreshButton] = useState(null)
-  function showToast({button}) {
-    setRefreshButton(button)
-  }
-  function closeToast() {
-    setRefreshButton(null)
-  }
-  // decides when to show the toast
   useEffect(() => {
     if (showReload && waitingWorker) {
-      showToast({
-        button: (
-          <div>
-            A new version of this page is available
-            <button onClick={() => reloadPage()}>REFRESH</button>
-          </div>
-        ),
-      });
-    } else closeToast();
+      setRefreshButton((
+        <div>
+          A new version of this page is available
+          <button onClick={() => reloadPage()}>REFRESH</button>
+        </div>
+      ));
+    } else setRefreshButton(null);
   }, [waitingWorker, showReload, reloadPage]);
 
   return (
@@ -46,7 +42,7 @@ function App() {
       {refreshButton}
 
       <ul>
-        {items.map((e, i) =>
+        {deskItems.map((e, i) =>
           <li onClick={() => addWord(e)} key={i}>{e}</li>
         )}
       </ul>

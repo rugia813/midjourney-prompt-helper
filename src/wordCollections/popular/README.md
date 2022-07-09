@@ -1,0 +1,1 @@
+extracted from midjourney site, words that people used the most.
