@@ -1,15 +1,18 @@
 import './App.css';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useServiceWorker } from './pwa/useServiceWorker';
-import popular1 from "./wordCollections/popular/popular1.json";
+import Shelf from './components/Shelf';
 
 function App() {
   // click to add word
-  const wordCollections = [
-    { name:'popular', items: popular1 }
-  ]
-  console.log('wordCollections: ', wordCollections);
-  const deskItems = ['aaa', 'bbb', 'ccc']
+  const [deskItems, setDeskItems] = useState([])
+  const addDeskItem = useCallback(
+    (item) => {
+      setDeskItems([...deskItems, item])
+    },
+    [deskItems],
+  )
+
   const [res, setRes] = useState('dsadsa')
   const inputRef = useRef()
   const addWord = (word) => {
@@ -23,7 +26,7 @@ function App() {
     }, 100)
   }
 
-  // pwa
+  //#region pwa
   const { reloadPage, showReload, waitingWorker } = useServiceWorker()
   const [refreshButton, setRefreshButton] = useState(null)
   useEffect(() => {
@@ -36,10 +39,13 @@ function App() {
       ));
     } else setRefreshButton(null);
   }, [waitingWorker, showReload, reloadPage]);
+  //#endregion
 
   return (
-    <div className="App">
+    <div className="App h-screen flex flex-col items-center">
       {refreshButton}
+
+      <Shelf addDeskItem={addDeskItem} />
 
       <ul>
         {deskItems.map((e, i) =>
