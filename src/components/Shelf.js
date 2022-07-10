@@ -4,15 +4,15 @@ import popular2 from "../wordCollections/popular/popular2.json";
 
 
 const wordCollections = [
-	{ name: 'popular1', items: popular1 },
-	{ name: 'popular2', items: popular2 },
+	{ name: 'popular1', items: popular1.slice(0, 200) },
+	{ name: 'popular2', items: popular2.slice(0, 200) },
 ]
 
 export default function Shelf({ customCollections = [], addDeskItem }) {
 	const collections = useMemo(() => wordCollections.concat(customCollections), [customCollections])
 	const [activeIdx, setActiveIdx] = useState(0)
 	return (
-		<div className='w-full max-w-6xl flex flex-wrap content-start'>
+		<div className='w-full flex flex-wrap content-start'>
 			<ul className='w-full m-2 flex flex-row'>
 				{collections.map((collection, idx) => (
 					<li

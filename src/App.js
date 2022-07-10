@@ -2,6 +2,7 @@ import './App.css';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useServiceWorker } from './pwa/useServiceWorker';
 import Shelf from './components/Shelf';
+import Desk from './components/Desk';
 
 function App() {
   // click to add word
@@ -13,7 +14,7 @@ function App() {
     [deskItems],
   )
 
-  const [res, setRes] = useState('dsadsa')
+  const [res, setRes] = useState('')
   const inputRef = useRef()
   const addWord = (word) => {
     const from = inputRef.current.selectionStart
@@ -25,6 +26,8 @@ function App() {
       inputRef.current.selectionEnd = newPos
     }, 100)
   }
+
+  const [customCollections, setCustomCollections] = useState([])
 
   //#region pwa
   const { reloadPage, showReload, waitingWorker } = useServiceWorker()
@@ -42,16 +45,12 @@ function App() {
   //#endregion
 
   return (
-    <div className="App h-screen flex flex-col items-center">
+    <div className="App h-screen flex flex-col items-center max-w-6xl m-auto justify-around">
       {refreshButton}
 
-      <Shelf addDeskItem={addDeskItem} />
+      <Shelf addDeskItem={addDeskItem} customCollections={customCollections} />
 
-      <ul>
-        {deskItems.map((e, i) =>
-          <li onClick={() => addWord(e)} key={i}>{e}</li>
-        )}
-      </ul>
+      <Desk deskItems={deskItems} addWord={addWord} />
 
       <input
         ref={inputRef}
