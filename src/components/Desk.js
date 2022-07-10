@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import DeskItemButton from './DeskItemButton'
 
-const delimiters = [' ', ', ']
+const delimiters = [' ', ', ', '::']
 export default function Desk({deskItems, addWord}) {
 	const [delimiterIdx, setDelimiterIdx] = useState(0)
 	const btnStyle = 'flex-initial border border-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg text-white'
@@ -9,6 +9,7 @@ export default function Desk({deskItems, addWord}) {
 
 	return (
 		<div className='flex w-full'>
+
 			{/* Desk Items */}
 			<ul className='flex flex-wrap p-2 border border-dashed m-1 w-full min-h-[120px]'>
 				{deskItems.map((word, i) =>
@@ -17,6 +18,7 @@ export default function Desk({deskItems, addWord}) {
 					</li>
 				)}
 			</ul>
+
 			{/* Delimiter Buttons */}
 			<div className='flex flex-col justify-around'>
 				<button
@@ -27,10 +29,15 @@ export default function Desk({deskItems, addWord}) {
 					className={`${btnStyle} ${delimiterIdx === 1 && btnStyleActive}`}
 					onClick={() => setDelimiterIdx(1)}
 				>,</button>
+				<button
+					className={`${btnStyle} ${delimiterIdx === 2 && btnStyleActive}`}
+					onClick={() => setDelimiterIdx(2)}
+				>::</button>
 				{/* <button
 					className='flex-initial bg-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg'
 				>::</button> */}
 			</div>
+
 		</div>
 	)
 }

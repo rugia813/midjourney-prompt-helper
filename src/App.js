@@ -3,6 +3,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useServiceWorker } from './pwa/useServiceWorker';
 import Shelf from './components/Shelf';
 import Desk from './components/Desk';
+import ModifierPanel from './components/ModifierPanel';
 
 function App() {
   // click to add word
@@ -27,6 +28,10 @@ function App() {
     }, 100)
   }
 
+  // modifiers
+  const [modifiers, setModifiers] = useState([])
+
+  // save words
   const [customCollections, setCustomCollections] = useState([])
 
   //#region pwa
@@ -50,20 +55,26 @@ function App() {
 
       <Shelf addDeskItem={addDeskItem} customCollections={customCollections} />
 
-      <Desk deskItems={deskItems} addWord={addWord} />
+      <div className='w-full'>
+        <Desk deskItems={deskItems} addWord={addWord} />
 
-      <div
-        className='w-full h-max flex-initial flex'
-      >
-        <textarea
-          ref={inputRef}
-          className='flex-auto'
-          value={res} onChange={e => setRes(e.target.value)}
-        />
-        <button
-          className='flex-initial bg-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg'
-          onClick={e => copyToClipboard(res)}
-        >📋</button>
+        <ModifierPanel modifiers={modifiers} setModifiers={setModifiers} />
+      </div>
+
+      <div className='w-full h-fit flex-initial flex flex-col' >
+        <div className='w-full h-max flex-initial flex' >
+          <textarea
+            ref={inputRef}
+            className='flex-auto'
+            value={res}
+            onChange={e => setRes(e.target.value)}
+          />
+          <button
+            className='flex-initial bg-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg'
+            onClick={e => copyToClipboard(res + modifiers)}
+          >📋</button>
+        </div>
+        <div className='m-auto text-white bg-slate-600 h-6'>{modifiers}</div>
       </div>
     </div>
   );
