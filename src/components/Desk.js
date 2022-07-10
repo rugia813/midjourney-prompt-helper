@@ -13,7 +13,7 @@ export default function Desk({deskItems, addWord}) {
 			<ul className='flex flex-wrap p-2 border border-dashed m-1 w-full min-h-[120px]'>
 				{deskItems.map((word, i) =>
 					<li key={i}>
-						<DeskItemButton initialText={word} addWord={(text) => addWord(text + delimiters[delimiterIdx])} />
+						<DeskItemButton initialText={word} delimiter={delimiters[delimiterIdx]} addWord={addWord} />
 					</li>
 				)}
 			</ul>

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 
-export default function DeskItemButton({ initialText, addWord }) {
+export default function DeskItemButton({ initialText, addWord, delimiter }) {
 	const [text, setText] = useState(initialText)
 	const [edditable, setEdditable] = useState(false)
 	const buttonRef = useRef(null)
@@ -14,14 +14,14 @@ export default function DeskItemButton({ initialText, addWord }) {
 					${!edditable && 'hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black'}
 					${edditable && 'bg-white text-neutral-900'}
 				`}
-				onClick={() => !edditable && addWord(text)}
+				onClick={() => !edditable && addWord(text + delimiter)}
 			>
 				<span
 					ref={buttonRef}
 					className='p-3'
 					contentEditable={edditable}
 					onBlur={e => setText(e.target.textContent) & setEdditable(edditable => false)}
-				>{text}</span>
+				>{text + delimiter}</span>
 			</button>
 
 			<div className={`invisible group-hover:visible flex flex-col`}>
