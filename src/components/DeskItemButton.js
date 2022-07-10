@@ -18,10 +18,11 @@ export default function DeskItemButton({ initialText, addWord, delimiter }) {
 			>
 				<span
 					ref={buttonRef}
-					className='p-3'
+					className={edditable ? 'p-3' : 'pl-3'}
 					contentEditable={edditable}
 					onBlur={e => setText(e.target.textContent) & setEdditable(edditable => false)}
-				>{text + delimiter}</span>
+				>{text}</span>
+				<span className={edditable ? 'invisible' : 'pr-3'}>{delimiter}</span>
 			</button>
 
 			<div className={`invisible group-hover:visible flex flex-col`}>

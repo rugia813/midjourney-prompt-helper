@@ -8,7 +8,7 @@ export default function Desk({deskItems, addWord}) {
 	const btnStyleActive = 'bg-blue-500'
 
 	return (
-		<div className='flex'>
+		<div className='flex w-full'>
 			{/* Desk Items */}
 			<ul className='flex flex-wrap p-2 border border-dashed m-1 w-full min-h-[120px]'>
 				{deskItems.map((word, i) =>
