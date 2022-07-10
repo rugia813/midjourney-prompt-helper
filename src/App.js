@@ -53,7 +53,7 @@ function App() {
       <Desk deskItems={deskItems} addWord={addWord} />
 
       <div
-        className='w-10/12 h-max flex-initial flex'
+        className='w-full h-max flex-initial flex'
       >
         <textarea
           ref={inputRef}
@@ -61,7 +61,7 @@ function App() {
           value={res} onChange={e => setRes(e.target.value)}
         />
         <button
-          className='flex-initial bg-blue-500 hover:bg-blue-200 p-3 rounded'
+          className='flex-initial bg-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg'
           onClick={e => copyToClipboard(res)}
         >📋</button>
       </div>

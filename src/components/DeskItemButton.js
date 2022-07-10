@@ -6,7 +6,7 @@ export default function DeskItemButton({ initialText, addWord }) {
 	const buttonRef = useRef(null)
 
 	return (
-		<div className='relative flex group m-1'>
+		<div className='relative flex group my-1'>
 
 			<button
 				className={`
