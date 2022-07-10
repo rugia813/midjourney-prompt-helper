@@ -46,7 +46,7 @@ export default function ModifierPanel({modifiers, setModifiers}) {
 		<div
 			className='
 				flex flex-col
-				border border-white border-dashed h-48 p-3 text-neutral-400
+				border border-white border-dashed h-32 p-3 text-neutral-400
 			'
 		>
 			{/* Size */}

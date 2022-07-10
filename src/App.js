@@ -4,6 +4,7 @@ import { useServiceWorker } from './pwa/useServiceWorker';
 import Shelf from './components/Shelf';
 import Desk from './components/Desk';
 import ModifierPanel from './components/ModifierPanel';
+import Header from './components/Header';
 
 function App() {
   // click to add word
@@ -13,6 +14,12 @@ function App() {
       setDeskItems([...deskItems, item])
     },
     [deskItems],
+  )
+  const removeFromDeskItemsAtIdx = useCallback(
+    (idx) => {
+      setDeskItems(deskItems.filter((e, i) => i !== idx))
+    },
+    [deskItems]
   )
 
   const [res, setRes] = useState('')
@@ -56,12 +63,13 @@ function App() {
       <Shelf addDeskItem={addDeskItem} customCollections={customCollections} />
 
       <div className='w-full'>
-        <Desk deskItems={deskItems} addWord={addWord} />
+        <Desk deskItems={deskItems} addWord={addWord} removeWordAtIdx={removeFromDeskItemsAtIdx} />
 
         <ModifierPanel modifiers={modifiers} setModifiers={setModifiers} />
       </div>
 
       <div className='w-full h-fit flex-initial flex flex-col' >
+        <Header>Prompt result</Header>
         <div className='w-full h-max flex-initial flex' >
           <textarea
             ref={inputRef}
