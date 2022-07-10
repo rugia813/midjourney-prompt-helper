@@ -52,12 +52,25 @@ function App() {
 
       <Desk deskItems={deskItems} addWord={addWord} />
 
-      <input
-        ref={inputRef}
-        value={res} onChange={e => setRes(e.target.value)}
-      />
+      <div
+        className='w-10/12 h-max flex-initial flex'
+      >
+        <textarea
+          ref={inputRef}
+          className='flex-auto'
+          value={res} onChange={e => setRes(e.target.value)}
+        />
+        <button
+          className='flex-initial bg-blue-500 hover:bg-blue-200 p-3 rounded'
+          onClick={e => copyToClipboard(res)}
+        >📋</button>
+      </div>
     </div>
   );
+}
+
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text);
 }
 
 export default App;

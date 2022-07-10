@@ -28,7 +28,7 @@ export default function DeskItemButton({ initialText, addWord }) {
 				{/* Edit */}
 				<div
 					className='text-blue-300 flex-1 cursor-pointer'
-					onClick={e => setEdditable(edditable => !edditable) & console.log(buttonRef.current.focus())}
+					onClick={e => setEdditable(edditable => !edditable)}
 				>🖍</div>
 				{/* Delete */}
 				<div
