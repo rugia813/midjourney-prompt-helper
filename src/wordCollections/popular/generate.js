@@ -22,5 +22,5 @@ const res2 = Object.entries(map2)
 	.sort((a, b) => b.count - a.count)
 	.map(item => item.key)
 
-fs.writeFileSync('popular1.json', JSON.stringify(res1))
-fs.writeFileSync('popular2.json', JSON.stringify(res2))
+fs.writeFileSync('popular1.json', JSON.stringify(res1.slice(0, 2000)))
+fs.writeFileSync('popular2.json', JSON.stringify(res2.slice(0, 2000)))

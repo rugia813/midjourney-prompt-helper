@@ -5,21 +5,18 @@ import artists from "../wordCollections/artists/artists.json";
 import _3D from "../wordCollections/3D/3D.json";
 import Header from './Header';
 
-console.log('popular1: ', popular1.length);
-console.log('popular2: ', popular2.length);
-
 const wordCollections = [
 	{ name: 'Artists', items: artists },
 	{ name: '3D', items: _3D },
-	{ name: 'Popular1', items: popular1.slice(0, 200) },
-	{ name: 'Popular2', items: popular2.slice(0, 200) },
+	{ name: 'Popular1', items: popular1 },
+	{ name: 'Popular2', items: popular2 },
 ]
 
 export default function Shelf({ customCollections = [], addDeskItem }) {
 	const collections = useMemo(() => wordCollections.concat(customCollections), [customCollections])
 	const [activeIdx, setActiveIdx] = useState(0)
 	return (
-		<div className='w-full h-96 flex flex-wrap content-start'>
+		<div className='w-full h-96 overflow-hidden flex flex-wrap content-start'>
 			<Header>Pick words that you might use</Header>
 			<ul className='w-full m-2 flex flex-row'>
 				{collections.map((collection, idx) => (
@@ -35,7 +32,7 @@ export default function Shelf({ customCollections = [], addDeskItem }) {
 					> {collection.name} </li>
 				))}
 			</ul>
-			<ul className='w-full h-full p-2 flex flex-wrap content-start max-h-96 overflow-auto border border-slate-600'>
+			<ul className='w-full h-72 p-2 flex flex-wrap content-start overflow-auto border border-slate-600'>
 				{collections[activeIdx].items.map((item, idx) => (
 					<li
 						className='
