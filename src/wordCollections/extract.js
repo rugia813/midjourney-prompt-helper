@@ -6,7 +6,7 @@ for (let i = 1;i < 25;i++) {
 		fetch(
 
 		).then(e => e.json()).then(e => console.log(res = res.concat(e.map(e => e.event.textPrompt))))
-	}, 1000)
+	}, 1000 * i)
 }
 
 res.forEach(arr => {
@@ -21,6 +21,6 @@ res.forEach(arr => {
 
 let ranked = Object.entries(map)
 	.map(([key, val]) => ({ key, count: val }))
-	.filter(e => e.count > 50)
+	.filter(e => e.count > 50 || !e.val)
 	.sort((a, b) => b.count - a.count)
 	.map(item => item.key)
