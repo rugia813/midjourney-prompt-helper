@@ -11,10 +11,10 @@ export default function Desk({ deskItems, addWord, removeWordAtIdx }) {
 	return (
 		<>
 			<Header>Use words you picked to form prompt</Header>
-			<div className='flex w-full'>
+			<div className='flex w-full mb-1'>
 
 				{/* Desk Items */}
-				<ul className='flex flex-wrap p-2 border border-dashed m-1 w-full min-h-[120px] overflow-y-auto max-h-96'>
+				<ul className='flex flex-wrap p-2 border border-dashed w-full min-h-[120px] overflow-y-auto max-h-96'>
 					{deskItems.map((word, i) =>
 						<li key={word+i}>
 							<DeskItemButton

@@ -2,12 +2,20 @@ import React, { useMemo, useState } from 'react'
 import popular1 from "../wordCollections/popular/popular1.json";
 import popular2 from "../wordCollections/popular/popular2.json";
 import artists from "../wordCollections/artists/artists.json";
-import _3D from "../wordCollections/3D/3D.json";
+import animals from "../wordCollections/animals/animals.json";
+import top from "../wordCollections/top.json";
+import portrait from "../wordCollections/portrait.json";
+import landscape from "../wordCollections/landscape.json";
+import _3D from "../wordCollections/3D.json";
 import Header from './Header';
 
 const wordCollections = [
+	{ name: 'Animals', items: animals },
+	{ name: 'Portrait', items: portrait },
+	{ name: 'Landscape', items: landscape },
 	{ name: 'Artists', items: artists },
 	{ name: '3D', items: _3D },
+	{ name: 'Top', items: top },
 	{ name: 'Popular1', items: popular1 },
 	{ name: 'Popular2', items: popular2 },
 ]
@@ -28,23 +36,24 @@ export default function Shelf({ customCollections = [], addDeskItem }) {
 							${activeIdx === idx && 'bg-white text-black'}
 						`}
 						key={idx}
-						onMouseEnter={() => setActiveIdx(idx)}
+						onClick={() => setActiveIdx(idx)}
 					> {collection.name} </li>
 				))}
 			</ul>
 			<ul className='w-full h-72 p-2 flex flex-wrap content-start overflow-auto border border-slate-600'>
 				{collections[activeIdx].items.map((item, idx) => (
 					<li
-						className='
-							text-neutral-400 text-sm
-							p-2 py-0 m-1 w-fit h-fit flex-initial cursor-pointer
+						className={`
+							text-neutral-400 text-md
+							p-2 py-0 m-1 h-fit flex-initial cursor-pointer
 							border border-neutral-400 rounded
 							hover:bg-neutral-400 hover:text-white
 							active:bg-neutral-400 active:text-white
-						'
+							${item.startsWith('#') ? 'w-full font-bold' : 'w-fit '}
+						`}
 						key={idx}
-						onClick={() => addDeskItem(item)}
-					> {item} </li>
+						onClick={() => addDeskItem(item.replace(/^#/, ''))}
+					> {item.replace(/^#/, '')} </li>
 				))}
 			</ul>
 		</div>

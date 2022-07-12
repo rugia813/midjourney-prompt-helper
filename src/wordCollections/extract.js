@@ -11,7 +11,7 @@ for (let i = 1;i < 25;i++) {
 
 res.forEach(arr => {
 	try {
-		arr.join(', ').split(', ').forEach(key => {
+		(typeof arr === 'object' ? arr.join(', ') : arr).split(', ').forEach(key => {
 			map[key] = map[key] ? map[key] + 1 : 1
 		})
 	} catch (e) {
@@ -21,6 +21,7 @@ res.forEach(arr => {
 
 let ranked = Object.entries(map)
 	.map(([key, val]) => ({ key, count: val }))
-	.filter(e => e.count > 50 || !e.val)
+	.filter(e => e.count > 150 && e.key)
 	.sort((a, b) => b.count - a.count)
 	.map(item => item.key)
+	ranked
