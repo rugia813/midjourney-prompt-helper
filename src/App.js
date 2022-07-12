@@ -5,6 +5,7 @@ import Shelf from './components/Shelf';
 import Desk from './components/Desk';
 import ModifierPanel from './components/ModifierPanel';
 import Header from './components/Header';
+import svgGithub from "./github.svg";
 
 function App() {
   // click to add word
@@ -85,6 +86,11 @@ function App() {
           >📋</button>
         </div>
         <div className='m-auto text-white bg-slate-600 h-6'>{modifiers}</div>
+      </div>
+
+      {/* Github */}
+      <div className="fixed right-3 bottom-3 bg-slate-600 rounded hover:scale-105 xl:visible invisible" title="Source Code @ Github">
+        <a href="https://github.com/rugia813/midjourney-prompt-helper" target="tab" alt="Link to source code at Github"> <img alt="github" src={svgGithub} /> </a>
       </div>
     </div>
   );

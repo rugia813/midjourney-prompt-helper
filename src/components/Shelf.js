@@ -25,7 +25,7 @@ export default function Shelf({ customCollections = [], addDeskItem }) {
 	const [activeIdx, setActiveIdx] = useState(0)
 	return (
 		<div className='w-full h-96 overflow-hidden flex flex-wrap content-start'>
-			<Header>Pick words that you might use</Header>
+			<Header>Pick words that you might want to use</Header>
 			<ul className='w-full m-2 flex flex-row'>
 				{collections.map((collection, idx) => (
 					<li

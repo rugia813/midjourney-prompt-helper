@@ -10,7 +10,7 @@ export default function Desk({ deskItems, addWord, removeWordAtIdx, clearDeskIte
 
 	return (
 		<div className='relative'>
-			<Header>Use words you picked to form prompt</Header>
+			<Header>Add words into the prompt</Header>
 			<button title='Remove All' className='absolute top-2 right-10' onClick={clearDeskItems}>❌</button>
 			<div className='flex w-full mb-1'>
 
