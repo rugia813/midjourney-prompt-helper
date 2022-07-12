@@ -82,7 +82,7 @@ function App() {
           />
           <button
             className='flex-initial bg-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg'
-            onClick={e => copyToClipboard(res + modifiers)}
+            onClick={e => copyToClipboard(res + ' ' + modifiers)}
           >📋</button>
         </div>
         <div className='m-auto text-white bg-slate-600 h-6'>{modifiers}</div>

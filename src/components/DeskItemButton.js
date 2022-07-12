@@ -6,7 +6,7 @@ export default function DeskItemButton({ initialText, addWord, removeWordAtIdx, 
 	const buttonRef = useRef(null)
 
 	return (
-		<div className='relative flex group my-1'>
+		<div className='relative flex group mb-1'>
 
 			<button
 				className={`
@@ -14,20 +14,20 @@ export default function DeskItemButton({ initialText, addWord, removeWordAtIdx, 
 					${!edditable && 'hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black'}
 					${edditable && 'bg-white text-neutral-900 cursor-text'}
 				`}
-				onClick={() => !edditable && addWord(text + delimiter)}
+				onClick={() => !edditable && addWord(delimiter + text)}
 			>
+				<span className={`${edditable ? 'invisible' : 'pl-3'}`}>{delimiter}</span>
 				<span
 					ref={buttonRef}
-					className={edditable ? 'p-3' : 'pl-3'}
+					className={edditable ? 'p-3' : 'pr-3'}
 					contentEditable={edditable}
 					onBlur={e => setText(e.target.textContent) & setEdditable(edditable => false)}
 				>{text}</span>
-				<span className={edditable ? 'invisible' : 'pr-3'}>{delimiter}</span>
 			</button>
 
 			<div className={`
 				invisible group-hover:visible
-				flex flex-col
+				flex flex-col w-3
 			`}>
 				{/* Edit */}
 				<div
