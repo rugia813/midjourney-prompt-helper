@@ -15,6 +15,7 @@ function App() {
     },
     [deskItems],
   )
+  const clearDeskItems = () => setDeskItems([])
   const removeFromDeskItemsAtIdx = useCallback(
     (idx) => {
       setDeskItems(deskItems.filter((e, i) => i !== idx))
@@ -63,7 +64,7 @@ function App() {
       <Shelf addDeskItem={addDeskItem} customCollections={customCollections} />
 
       <div className='w-full'>
-        <Desk deskItems={deskItems} addWord={addWord} removeWordAtIdx={removeFromDeskItemsAtIdx} />
+        <Desk deskItems={deskItems} addWord={addWord} removeWordAtIdx={removeFromDeskItemsAtIdx} clearDeskItems={clearDeskItems} />
 
         <ModifierPanel modifiers={modifiers} setModifiers={setModifiers} />
       </div>

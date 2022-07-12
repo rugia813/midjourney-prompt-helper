@@ -3,14 +3,15 @@ import DeskItemButton from './DeskItemButton'
 import Header from './Header'
 
 const delimiters = [' ', ', ', '::']
-export default function Desk({ deskItems, addWord, removeWordAtIdx }) {
+export default function Desk({ deskItems, addWord, removeWordAtIdx, clearDeskItems }) {
 	const [delimiterIdx, setDelimiterIdx] = useState(0)
 	const btnStyle = 'flex-initial border border-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg text-white'
 	const btnStyleActive = 'bg-blue-500'
 
 	return (
-		<>
+		<div className='relative'>
 			<Header>Use words you picked to form prompt</Header>
+			<button className='absolute top-2 right-10' onClick={clearDeskItems}>❌</button>
 			<div className='flex w-full mb-1'>
 
 				{/* Desk Items */}
@@ -47,6 +48,6 @@ export default function Desk({ deskItems, addWord, removeWordAtIdx }) {
 				</div>
 
 			</div>
-		</>
+		</div>
 	)
 }
