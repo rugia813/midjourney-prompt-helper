@@ -69,7 +69,8 @@ function App() {
         <ModifierPanel modifiers={modifiers} setModifiers={setModifiers} />
       </div>
 
-      <div className='w-full h-fit flex-initial flex flex-col' >
+      <div className='w-full h-fit flex-initial flex flex-col relative' >
+        <button title='Clear' className='absolute top-2 right-10' onClick={() => setRes('')}>❌</button>
         <Header>Prompt result</Header>
         <div className='w-full h-max flex-initial flex' >
           <textarea

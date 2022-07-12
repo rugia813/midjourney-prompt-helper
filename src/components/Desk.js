@@ -11,7 +11,7 @@ export default function Desk({ deskItems, addWord, removeWordAtIdx, clearDeskIte
 	return (
 		<div className='relative'>
 			<Header>Use words you picked to form prompt</Header>
-			<button className='absolute top-2 right-10' onClick={clearDeskItems}>❌</button>
+			<button title='Remove All' className='absolute top-2 right-10' onClick={clearDeskItems}>❌</button>
 			<div className='flex w-full mb-1'>
 
 				{/* Desk Items */}
