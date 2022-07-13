@@ -46,12 +46,23 @@ function App() {
   //#region pwa
   const { reloadPage, showReload, waitingWorker } = useServiceWorker()
   const [refreshButton, setRefreshButton] = useState(null)
+  const [dismissed, setDismissed] = useState(false)
   useEffect(() => {
     if (showReload && waitingWorker) {
       setRefreshButton((
-        <div>
-          A new version of this page is available
-          <button onClick={() => reloadPage()}>REFRESH</button>
+        <div className='
+        text-white fixed top-5 right-1 bg-gradient-to-r from-neutral-700 to-neutral-900
+          px-2 py-4 rounded border text-sm
+        '>
+          <div className='absolute right-1 top-0 cursor-pointer font-bold hover:text-red-600' onClick={() => setDismissed(true)}>X</div>
+          A new version is available
+          <button
+            className='
+              block font-bold border px-1 mt-1 mx-auto rounded
+              hover:bg-white hover:text-black hover:border-black
+            '
+            onClick={() => reloadPage()}
+          >REFRESH</button>
         </div>
       ));
     } else setRefreshButton(null);
@@ -60,7 +71,7 @@ function App() {
 
   return (
     <div className="App h-screen flex flex-col items-center max-w-6xl m-auto justify-around">
-      {refreshButton}
+      {!dismissed && refreshButton}
 
       <Shelf addDeskItem={addDeskItem} customCollections={customCollections} />
 

@@ -24,4 +24,5 @@ let ranked = Object.entries(map)
 	.filter(e => e.count > 150 && e.key)
 	.sort((a, b) => b.count - a.count)
 	.map(item => item.key)
-	ranked
+
+ranked

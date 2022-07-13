@@ -35,6 +35,7 @@ export default function Desk({ deskItems, addWord, removeWordAtIdx, clearDeskIte
 						<button
 							className={`flex-1 text-xs whitespace-nowrap px-1 ${btnStyle} ${delimiterIdx === idx && btnStyleActive}`}
 							onClick={() => setDelimiterIdx(idx)}
+							key={idx}
 						>{delimiter === ' ' ? '—' : delimiter}</button>
 					))}
 				</div>

@@ -12,8 +12,8 @@ import _3D from "../wordCollections/3D.json";
 import Header from './Header';
 
 const wordCollections = [
-	{ name: 'Art Style', items: artStyle },
-	{ name: 'Art Medium', items: artMedium },
+	{ name: 'Art Style', items: artStyle.concat(artMedium) },
+	// { name: 'Art Medium', items: artMedium },
 	{ name: 'Animals', items: animals },
 	{ name: 'Portrait', items: portrait },
 	{ name: 'Landscape', items: landscape },
