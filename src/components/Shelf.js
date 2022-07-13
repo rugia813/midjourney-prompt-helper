@@ -3,6 +3,8 @@ import popular1 from "../wordCollections/popular/popular1.json";
 import popular2 from "../wordCollections/popular/popular2.json";
 import artists from "../wordCollections/artists/artists.json";
 import animals from "../wordCollections/animals/animals.json";
+import artStyle from "../wordCollections/artStyle.json";
+import artMedium from "../wordCollections/artMedium.json";
 import top from "../wordCollections/top.json";
 import portrait from "../wordCollections/portrait.json";
 import landscape from "../wordCollections/landscape.json";
@@ -10,6 +12,8 @@ import _3D from "../wordCollections/3D.json";
 import Header from './Header';
 
 const wordCollections = [
+	{ name: 'Art Style', items: artStyle },
+	{ name: 'Art Medium', items: artMedium },
 	{ name: 'Animals', items: animals },
 	{ name: 'Portrait', items: portrait },
 	{ name: 'Landscape', items: landscape },
