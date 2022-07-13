@@ -48,6 +48,7 @@ function App() {
   const [modifiers, setModifiers] = useState([])
 
   // save words
+  // eslint-disable-next-line no-unused-vars
   const [customCollections, setCustomCollections] = useState([])
 
   //#region pwa
