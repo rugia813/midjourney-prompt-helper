@@ -6,9 +6,10 @@ import Desk from './components/Desk';
 import ModifierPanel from './components/ModifierPanel';
 import Header from './components/Header';
 import svgGithub from "./github.svg";
+import { loadDeskItems } from './components/utils/deskItemsSave';
 
 function App() {
-  // click to add word
+  // desk items
   const [deskItems, setDeskItems] = useState([])
   const addDeskItem = useCallback(
     (item) => {
@@ -23,7 +24,13 @@ function App() {
     },
     [deskItems]
   )
+  useEffect(() => {
+    const save = loadDeskItems()
+    save && setDeskItems(save)
+  }, [])
 
+
+  // click to add word
   const [res, setRes] = useState('')
   const inputRef = useRef()
   const addWord = (word) => {
@@ -71,18 +78,21 @@ function App() {
 
   return (
     <div className="App h-screen flex flex-col items-center max-w-6xl m-auto justify-around">
+      {/* PWA update notification */}
       {!dismissed && refreshButton}
 
+      {/* Shelf */}
       <Shelf addDeskItem={addDeskItem} customCollections={customCollections} />
 
+      {/* Desk */}
       <div className='w-full'>
         <Desk deskItems={deskItems} addWord={addWord} removeWordAtIdx={removeFromDeskItemsAtIdx} clearDeskItems={clearDeskItems} />
-
         <ModifierPanel modifiers={modifiers} setModifiers={setModifiers} />
       </div>
 
-      <div className='w-full h-fit flex-initial flex flex-col relative' >
-        <button title='Clear' className='absolute top-2 right-10' onClick={() => setRes('')}>❌</button>
+      {/* Prompt input */}
+      <div className='w-full h-fit flex-initial flex flex-col relative'>
+        <button title='Clear' className={`absolute top-2 right-10 ${res.length ? 'visible' : 'invisible'}`} onClick={() => setRes('')}>❌</button>
         <Header>Prompt result</Header>
         <div className='w-full h-max flex-initial flex' >
           <textarea
@@ -92,9 +102,12 @@ function App() {
             onChange={e => setRes(e.target.value)}
           />
           <button
-            className='flex-initial bg-blue-500 hover:bg-blue-300 active:bg-blue-200 p-2 rounded text-lg'
+            className='flex-initial p-2 rounded text-lg
+              bg-blue-500 hover:bg-blue-300 active:bg-blue-200
+              focus:bg-green-400 after:content-["📋"] focus:after:content-["✅"]
+            '
             onClick={e => copyToClipboard(res + ' ' + modifiers)}
-          >📋</button>
+          ></button>
         </div>
         <div className='m-auto text-white bg-slate-600 h-6'>{modifiers}</div>
       </div>

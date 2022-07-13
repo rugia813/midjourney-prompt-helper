@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import DeskItemButton from './DeskItemButton'
 import Header from './Header'
+import { saveDeskItems } from "./utils/deskItemsSave";
 
 const delimiters = [' ', ', ', '::', ', by ', ', --no ']
 
@@ -12,7 +13,10 @@ export default function Desk({ deskItems, addWord, removeWordAtIdx, clearDeskIte
 	return (
 		<div className='relative'>
 			<Header>Add words into the prompt</Header>
-			<button title='Remove All' className='absolute top-2 right-10' onClick={clearDeskItems}>❌</button>
+			<div className={`absolute top-2 right-10`}>
+				<button title='Save' className='after:content-["💾"] focus:after:content-["✅"]' onClick={() => saveDeskItems(deskItems)}></button>
+				<button title='Remove All' className={`${deskItems.length ? 'visible' : 'invisible'}`} onClick={clearDeskItems}>❌</button>
+			</div>
 			<div className='flex w-full mb-1'>
 
 				{/* Desk Items */}
