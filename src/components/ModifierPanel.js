@@ -50,62 +50,66 @@ export default function ModifierPanel({modifiers, setModifiers}) {
 			'
 		>
 			{/* Size */}
-			<div className='flex flex-1 flex-wrap'>
+			<div className='flex flex-1 items-center'>
 				<span className='font-bold mr-1'>Size: </span>
-				{sizeOptions.map((option, idx) => (
-					<div key={idx} title={option.info}>
-						<input
-							type='radio'
-							className='hidden peer'
-							id={option.label}
-							value={idx}
-							checked={sizeIdx === idx}
-							onChange={e => setSizeIdx(idx)}
-						/>
-						<label
-							htmlFor={option.label}
-							className='
+				<div className='w-max overflow-x-auto flex '>
+					{sizeOptions.map((option, idx) => (
+						<div key={idx} title={option.info} className='flex-1 flex whitespace-nowrap'>
+							<input
+								type='radio'
+								className='hidden peer'
+								id={option.label}
+								value={idx}
+								checked={sizeIdx === idx}
+								onChange={e => setSizeIdx(idx)}
+							/>
+							<label
+								htmlFor={option.label}
+								className='
 								border border-neutral-400 rounded p-2 mx-1 cursor-pointer
 								peer-checked:bg-yellow-700 peer-checked:text-white peer-checked:active:bg-yellow-300 peer-checked:active:text-black
 								hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black
 							'
-						>
-							{option.label}
-						</label>
-					</div>
-				))}
+							>
+								{option.label}
+							</label>
+						</div>
+					))}
+				</div>
 			</div>
 
 			{/* Algo Modifiers */}
-			<div className='flex flex-1 flex-wrap'>
+			<div className='flex flex-1 items-center'>
 				<span className='font-bold mr-1'>Algorithm Modifiers: </span>
-				{modifierOptions.map((option, idx) => (
-					<div key={idx}>
-						<input
-							type='checkbox'
-							className='hidden peer'
-							id={option.label}
-							value={idx}
-							checked={modifierIdxs.includes(idx)}
-							onChange={e => {
-								if (modifierIdxs.includes(idx))
-									setModifierIdxs(modifierIdxs.filter(e => e !== idx))
-								else
-									setModifierIdxs([...modifierIdxs, idx])
-							}}
-						/>
-						<label
-							htmlFor={option.label}
-							className='
-								border border-neutral-400 rounded p-2 mx-1 cursor-pointer
-								peer-checked:bg-yellow-700 peer-checked:text-white peer-checked:active:bg-yellow-300 peer-checked:active:text-black
-								hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black
-							'
-						>
-							{option.label}
-						</label>
-					</div>
-				))}
+				<div className='w-max overflow-x-auto flex'>
+					{modifierOptions.map((option, idx) => (
+						<div key={idx} className='flex-1 flex whitespace-nowrap'>
+							<input
+								type='checkbox'
+								className='hidden peer'
+								id={option.label}
+								value={idx}
+								checked={modifierIdxs.includes(idx)}
+								onChange={e => {
+									if (modifierIdxs.includes(idx))
+										setModifierIdxs(modifierIdxs.filter(e => e !== idx))
+									else
+										setModifierIdxs([...modifierIdxs, idx])
+								}}
+							/>
+							<label
+								htmlFor={option.label}
+								className='
+									border border-neutral-400 rounded p-2 mx-1 cursor-pointer
+									peer-checked:bg-yellow-700 peer-checked:text-white peer-checked:active:bg-yellow-300 peer-checked:active:text-black
+									hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black
+								'
+							>
+								{option.label}
+							</label>
+						</div>
+					))}
+				</div>
 			</div>
 
 		</div>
