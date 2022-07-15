@@ -20,12 +20,14 @@ const modifierOptions = [
 	{ label: '--fast' },
 	{ label: '--vibe' },
 	{ label: '--vibefast' },
+	{ label: '--test' },
 	{ label: '--hd' },
 	{ label: '--no dof' },
 	{ label: '--stop 20' },
 	{ label: '--stop 50' },
 	{ label: '--stop 80' },
 	{ label: '--uplight' },
+	{ label: '--sameseed' },
 ]
 
 export default function ModifierPanel({modifiers, setModifiers}) {
