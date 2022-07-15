@@ -5,6 +5,7 @@ import artists from "../wordCollections/artists/artists.json";
 import animals from "../wordCollections/animals/animals.json";
 import artStyle from "../wordCollections/artStyle.json";
 import artMedium from "../wordCollections/artMedium.json";
+import lighting from "../wordCollections/lighting.json";
 import top from "../wordCollections/top.json";
 import portrait from "../wordCollections/portrait.json";
 import landscape from "../wordCollections/landscape.json";
@@ -13,9 +14,9 @@ import Header from './Header';
 
 const wordCollections = [
 	{ name: 'Art Style', items: artStyle.concat(artMedium) },
-	// { name: 'Art Medium', items: artMedium },
 	{ name: 'Animals', items: animals },
 	{ name: 'Portrait', items: portrait },
+	{ name: 'Lighting', items: lighting },
 	{ name: 'Landscape', items: landscape },
 	{ name: 'Artists', items: artists },
 	{ name: '3D', items: _3D },
