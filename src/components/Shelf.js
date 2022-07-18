@@ -31,12 +31,12 @@ export default function Shelf({ customCollections = [], addDeskItem }) {
 	return (
 		<div className='w-full h-96 overflow-hidden flex flex-wrap content-start'>
 			<Header>Pick words that you might want to use</Header>
-			<ul className='w-full m-2 flex flex-row overflow-auto'>
+			<ul className='w-full mt-2 flex flex-row overflow-auto'>
 				{collections.map((collection, idx) => (
 					<li
 						className={`
-							text-white border border-white rounded whitespace-nowrap
-							m-1 py-1 px-2 w-fit cursor-pointer
+							btn py-1 my-0 ml-0 mr-0.5 whitespace-nowrap
+							text-white border border-white border-b-0 rounded-b-none rounded-t-md
 							hover:bg-white hover:text-black
 							${activeIdx === idx && 'bg-white text-black'}
 						`}
@@ -45,15 +45,11 @@ export default function Shelf({ customCollections = [], addDeskItem }) {
 					> {collection.name} </li>
 				))}
 			</ul>
-			<ul className='w-full h-72 p-2 flex flex-wrap content-start overflow-auto border border-slate-600'>
+			<ul className='w-full h-72 p-2 flex flex-wrap content-start overflow-auto border border-white'>
 				{collections[activeIdx].items.map((item, idx) => (
 					<li
 						className={`
-							text-neutral-400 text-md
-							p-2 py-0 m-1 h-fit flex-initial cursor-pointer
-							border border-neutral-400 rounded
-							hover:bg-neutral-400 hover:text-white
-							active:bg-neutral-400 active:text-white
+							btn
 							${item.startsWith('#') ? 'w-full font-bold' : 'w-fit '}
 						`}
 						key={idx}

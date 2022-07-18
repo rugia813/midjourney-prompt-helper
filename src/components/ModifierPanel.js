@@ -30,6 +30,12 @@ const modifierOptions = [
 	{ label: '--sameseed' },
 ]
 
+const modifierBtnStyle = `
+	border border-neutral-400 rounded p-2 mx-1 cursor-pointer
+	peer-checked:bg-yellow-700 peer-checked:text-white peer-checked:active:bg-yellow-300 peer-checked:active:text-black
+	hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black
+`
+
 export default function ModifierPanel({modifiers, setModifiers}) {
 	const [sizeIdx, setSizeIdx] = useState(0)
 	const [modifierIdxs, setModifierIdxs] = useState([])
@@ -67,11 +73,7 @@ export default function ModifierPanel({modifiers, setModifiers}) {
 							/>
 							<label
 								htmlFor={option.label}
-								className='
-								border border-neutral-400 rounded p-2 mx-1 cursor-pointer
-								peer-checked:bg-yellow-700 peer-checked:text-white peer-checked:active:bg-yellow-300 peer-checked:active:text-black
-								hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black
-							'
+								className={modifierBtnStyle}
 							>
 								{option.label}
 							</label>
@@ -101,11 +103,7 @@ export default function ModifierPanel({modifiers, setModifiers}) {
 							/>
 							<label
 								htmlFor={option.label}
-								className='
-									border border-neutral-400 rounded p-2 mx-1 cursor-pointer
-									peer-checked:bg-yellow-700 peer-checked:text-white peer-checked:active:bg-yellow-300 peer-checked:active:text-black
-									hover:bg-yellow-700 hover:text-white hover:border-white active:bg-yellow-300 active:text-black
-								'
+								className={modifierBtnStyle}
 							>
 								{option.label}
 							</label>

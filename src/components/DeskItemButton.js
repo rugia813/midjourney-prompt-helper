@@ -31,12 +31,12 @@ export default function DeskItemButton({ initialText, addWord, removeWordAtIdx, 
 			`}>
 				{/* Edit */}
 				<div
-					className={`text-blue-300 flex-1 cursor-pointer ${'group-focus-within:invisible'}`}
+					className={`text-blue-300 flex-1 cursor-pointer group-focus-within:invisible`}
 					onClick={e => setEdditable(edditable => !edditable)}
 				>🖍</div>
 				{/* Delete */}
 				<div
-					className={`text-white flex-1 cursor-pointer ${'group-focus-within:invisible'}`}
+					className={`text-white flex-1 cursor-pointer group-focus-within:invisible`}
 					onClick={e => removeWordAtIdx()}
 				>❌</div>
 			</div>

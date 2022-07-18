@@ -11,7 +11,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  /* h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  } */
+}
+
+@layer components {
+  .btn {
+    @apply text-neutral-400
+            p-2 py-0 m-1 cursor-pointer
+            border border-neutral-400 rounded
+            hover:bg-neutral-400 hover:text-white;
+  }
+}
+
+@layer utilities {
+  /* .filter-none {
+    filter: none;
+  }
+  .filter-grayscale {
+    filter: grayscale(100%);
+  } */
 }
