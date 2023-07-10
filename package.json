@@ -32,6 +32,9 @@
       "react-app/jest"
     ]
   },
+  "reactSnap": {
+    "skipThirdPartyRequests": true
+  },
   "browserslist": {
     "production": [
       ">0.2%",
