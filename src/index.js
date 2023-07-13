@@ -3,12 +3,28 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { hydrate, render } from "react-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import About from './About';
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/about",
+    element: <About />,
+  },
+]);
 
 const rootElement = document.getElementById("root");
 if (rootElement.hasChildNodes()) {
-  hydrate(<App />, rootElement);
+  hydrate(<RouterProvider router={router} />, rootElement);
 } else {
-  render(<App />, rootElement);
+  render(<RouterProvider router={router} />, rootElement);
 }
 
 // If you want to start measuring performance in your app, pass a function
