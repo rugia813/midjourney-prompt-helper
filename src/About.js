@@ -10,7 +10,7 @@ function About() {
       <Navbar />
 
       {/* About Page Content */}
-      <div className='text-white h-3/6 flex flex-col gap-12'>
+      <div id="about" className='text-white h-3/6 flex flex-col gap-12'>
         <p className=''>
           <h1 className='text-4xl font-bold mb-4'>About</h1>
           This is a tool to help you make prompts for <a href="https://www.midjourney.com/" className='underline' target='_blank' rel="noreferrer">midjourney</a>.
