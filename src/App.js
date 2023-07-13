@@ -7,6 +7,7 @@ import ModifierPanel from './components/ModifierPanel';
 import Header from './components/Header';
 import svgGithub from "./github.svg";
 import { loadDeskItems } from './components/utils/deskItemsSave';
+import Navbar from './components/Navbar';
 
 function App() {
   // desk items
@@ -81,6 +82,9 @@ function App() {
     <div className="App h-screen flex flex-col items-center max-w-6xl m-auto justify-around">
       {/* PWA update notification */}
       {!dismissed && refreshButton}
+
+      {/* Nav bar */}
+      <Navbar />
 
       {/* Shelf */}
       <Shelf addDeskItem={addDeskItem} customCollections={customCollections} />
